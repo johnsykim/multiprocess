@@ -38,3 +38,22 @@ prepshell:
     fi;\
   done;\
 
+reprocess:
+  # Echo Begin
+  @echo ${divider}
+  @echo ${whitespace}"BEGIN PARALLEL PROCESSING"
+  @echo ${divider};\
+  # Warn if shell script can't be located
+  @if [ ! -s {REPROCESS}.sh ]; then\
+    echo "Cannot locate ${REPROCESS}.sh";\
+  fi;\
+  # Run Python commands with multiprocess
+  @if [ ! -s ${REPROCESS}.sh ]; then\
+    echo "python3 ${MULTIPROCESS}.py ${REPROCESS}.sh ${N_CORES};\
+  fi;\
+  # Echo Finish
+  @echo ${divider}
+  @echo ${whitespace}"FINISH PARALLEL PROCESSING"
+  @echo ${divider}
+  # Remove used shell script
+  @rm -rf ${REPROCESS}.sh;\
