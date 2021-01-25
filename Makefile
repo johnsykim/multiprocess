@@ -57,3 +57,11 @@ reprocess:
   @echo ${divider}
   # Remove used shell script
   @rm -rf ${REPROCESS}.sh;\
+
+keycheck:
+  @python3 ${KEYCHECK}.py;\
+  # Remove reprocessed files
+  @for file in ${DIR}/XXXXX_Total_*_Reprocess; do\
+    rm -rf $${file};\
+  done;\
+  
